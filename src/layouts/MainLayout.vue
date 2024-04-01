@@ -11,25 +11,15 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title>
-          Unisys
-        </q-toolbar-title>
+        <q-toolbar-title> Unisys </q-toolbar-title>
 
         <div>UnisysChatBot v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
 
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-    >
+    <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
       <q-list>
-        <q-item-label
-          header
-        >
-          後台知識管理區
-        </q-item-label>
+        <q-item-label header> 後台知識管理區 </q-item-label>
 
         <EssentialLink
           v-for="link in essentialLinks"
@@ -46,62 +36,67 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
-import EssentialLink from 'components/EssentialLink.vue'
+import { defineComponent, ref } from "vue";
+import EssentialLink from "components/EssentialLink.vue";
 
 const linksList = [
   {
-    title: '優利AI智能小幫手',
-    caption: 'unisys chat bot',
-    icon: 'chat',
-    link: '/#/chatbot'
-  },  
-  {
-    title: '文件知識補充區',
-    caption: 'RAG',
-    icon: 'school',
-    link: '/#/RAG'
+    title: "優利AI智能小幫手",
+    caption: "unisys chat bot",
+    icon: "chat",
+    link: "/#/chatbot",
   },
   {
-    title: '資料彙整系統',
-    caption: 'vector DB、report system',
-    icon: 'school',
-    link: '/CleanData'
+    title: "知識樹維護",
+    caption: "KBase",
+    icon: "school",
+    link: "/#/Kbase",
   },
   {
-    title: '資料校正、分析、LOG紀錄',
-    caption: '資料反饋區',
-    icon: 'code',
-    link: 'LOG'
+    title: "文件知識補充區",
+    caption: "RAG",
+    icon: "school",
+    link: "/#/RAG",
   },
   {
-    title: '系統設定',
-    caption: '前端功能快速設定',
-    icon: 'settings',
-    link: '/#/Settings'
+    title: "資料彙整系統",
+    caption: "vector DB、report system",
+    icon: "school",
+    link: "/CleanData",
   },
-  
-]
+  {
+    title: "資料校正、分析、LOG紀錄",
+    caption: "資料反饋區",
+    icon: "code",
+    link: "LOG",
+  },
+  {
+    title: "系統設定",
+    caption: "前端功能快速設定",
+    icon: "settings",
+    link: "/#/Settings",
+  },
+];
 
 export default defineComponent({
-  name: 'MainLayout',
+  name: "MainLayout",
 
   components: {
-    EssentialLink
+    EssentialLink,
   },
 
-  setup () {
-    const leftDrawerOpen = ref(false)
+  setup() {
+    const leftDrawerOpen = ref(false);
 
     return {
       essentialLinks: linksList,
       leftDrawerOpen,
-      toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      }
-    }
-  }
-})
+      toggleLeftDrawer() {
+        leftDrawerOpen.value = !leftDrawerOpen.value;
+      },
+    };
+  },
+});
 </script>
 <style scoped>
 .custom-header {
